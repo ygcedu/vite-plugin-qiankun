@@ -62,7 +62,7 @@ const htmlPlugin: PluginFn = (qiankunName, microOption = {}) => {
     const moduleSrc = script$.attr('src')
     let appendBase = ''
     if (microOption.useDevMode && !isProduction) {
-      appendBase = '(window.proxy ? (window.proxy.__INJECTED_PUBLIC_PATH_BY_QIANKUN__ + \'..\') : \'\') + '
+      appendBase = '(window.proxy ? new URL(window.proxy.__INJECTED_PUBLIC_PATH_BY_QIANKUN__, window.location.href).origin : \'\') + ';
     }
     script$.removeAttr('src')
     script$.removeAttr('type')
